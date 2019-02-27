@@ -1,14 +1,8 @@
 const router = require("express").Router();
 const knex = require("knex");
 
-const knexConig = {
-  client: "sqlite3",
-  useNullAsDefault: true,
-  connection: {
-    filename: "./data/rolex.db3"
-  }
-};
-const db = knex(knexConig);
+const knexConig = require("../knexfile.js");
+const db = knex(knexConig.development);
 
 router.get("/", (req, res) => {
   // get the roles from the database
